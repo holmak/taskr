@@ -3,9 +3,13 @@ extends layout
 block content
   h1= title
   p These are the tasks:
-    ul
-      each task in tasks
-        li= task.title
   form(method='POST' action='/create')
-    input(type='text' name='title' required)
+    each task in tasks
+      p
+        input(type='checkbox' name='id' value=task.rowid)
+        span= task.title
+    input(type='text' name='title')
     input(type='submit' value='Create')
+    br
+    br
+    input(type='submit' value='Delete selected' formaction='/delete')
